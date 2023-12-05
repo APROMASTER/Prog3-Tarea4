@@ -6,7 +6,7 @@ class ProfileSearchTest
     public IWebDriver driver;
     public readonly string site;
 
-    public LoginTest()
+    public ProfileSearchTest()
     {
         driver = new ChromeDriver();
         driver.Manage().Window.Maximize();
@@ -18,8 +18,4 @@ class ProfileSearchTest
     }
 
 
-    ~LoginTest()
-    {
-        driver.Quit();
-    }
 }

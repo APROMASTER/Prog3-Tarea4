@@ -6,7 +6,7 @@ class TrendTest
     public IWebDriver driver;
     public readonly string site;
 
-    public LoginTest()
+    public TrendTest()
     {
         driver = new ChromeDriver();
         driver.Manage().Window.Maximize();
@@ -18,8 +18,4 @@ class TrendTest
     }
 
 
-    ~LoginTest()
-    {
-        driver.Quit();
-    }
 }

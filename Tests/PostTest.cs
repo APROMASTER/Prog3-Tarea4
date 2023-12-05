@@ -6,7 +6,7 @@ class PostTest
     public IWebDriver driver;
     public readonly string site;
 
-    public LoginTest()
+    public PostTest()
     {
         driver = new ChromeDriver();
         driver.Manage().Window.Maximize();
@@ -18,8 +18,4 @@ class PostTest
     }
 
 
-    ~LoginTest()
-    {
-        driver.Quit();
-    }
 }

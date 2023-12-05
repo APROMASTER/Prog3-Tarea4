@@ -6,7 +6,7 @@ class HashtagSearchTest
     public IWebDriver driver;
     public readonly string site;
 
-    public LoginTest()
+    public HashtagSearchTest()
     {
         driver = new ChromeDriver();
         driver.Manage().Window.Maximize();
@@ -18,8 +18,4 @@ class HashtagSearchTest
     }
 
 
-    ~LoginTest()
-    {
-        driver.Quit();
-    }
 }
