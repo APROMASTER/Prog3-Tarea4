@@ -10,7 +10,7 @@ public class BaseTest : IDisposable
     private readonly ITestOutputHelper _output;
     private static readonly Dictionary<string, TestResult> testResults = new Dictionary<string, TestResult>();
     protected string currentTestName;
-    private string _imagePath;
+    private string _imagePath = "Results";
 
     public BaseTest(ITestOutputHelper outputHelper)
     {
@@ -26,7 +26,6 @@ public class BaseTest : IDisposable
 
     public void Dispose()
     {
-        _imagePath = "Results";
         bool exists = Directory.Exists(@"..\..\..\" + _imagePath);
         if (!exists)
             System.IO.Directory.CreateDirectory(@"..\..\..\" + _imagePath);

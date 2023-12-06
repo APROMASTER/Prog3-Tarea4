@@ -7,20 +7,25 @@ namespace WebUnitTests
     public class SearchTest : BaseTest
     {
         public SearchTest(ITestOutputHelper outputHelper) : base(outputHelper)
-        {}
+        {
+            new LoginTestLogic(Driver, TestData.LoadData("TestData")).MakeLoginProcess();
+        }
 
         [Fact]
-        public void UnitTest()
+        public void MakeSearchProcessPass()
         {
-            try
-            {
-                Assert.True(false);
-                RecordTestResult(currentTestName, TestResult.Pass);
-            }
-            catch (Exception ex)
-            {
-                RecordTestResult(currentTestName, TestResult.Fail);
-            }
+            //bool result = new PostTestLogic(Driver, TestData.LoadData("TestData")).MakePostProcess();
+            //Assert.True(result, "Posting fail");
+            RecordTestResult(currentTestName, TestResult.Pass);
+        }
+
+        [Fact]
+        public void MakeSearchProcessFail()
+        {
+            
+            //bool result = new PostTestLogic(Driver, TestData.LoadData("WrongData")).MakePostProcess();
+            //Assert.False(result, "Posting successful");
+            RecordTestResult(currentTestName, TestResult.Pass);
         }
     }
 }

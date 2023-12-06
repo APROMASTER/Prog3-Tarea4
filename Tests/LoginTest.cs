@@ -10,7 +10,7 @@ namespace WebUnitTests
         {}
 
         [Fact]
-        public void MakeALoginPassed()
+        public void MakeALoginPass()
         {
             //Assert.True(false, "Log in Failed");
             bool result = new LoginTestLogic(Driver, TestData.LoadData("TestData")).MakeLoginProcess();
@@ -19,7 +19,7 @@ namespace WebUnitTests
         }
 
         [Fact]
-        public void MakeALoginFailed()
+        public void MakeALoginFail()
         {
             //Assert.False(true, "Log in Passed");
             bool result = new LoginTestLogic(Driver, TestData.LoadData("WrongData")).MakeLoginProcess();
