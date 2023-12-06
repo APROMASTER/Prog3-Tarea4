@@ -1,7 +1,3 @@
-﻿
-Console.WriteLine("Hello, World!");
+﻿// Hecho por Ariel Alejandro Nuñez Mendez 2022-0551
 
-int x = 0;
-
-if (x >= 0) Console.WriteLine("QUIT!");
 
