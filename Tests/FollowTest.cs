@@ -8,23 +8,34 @@ namespace WebUnitTests
     {
         public FollowTest(ITestOutputHelper outputHelper) : base(outputHelper)
         {
-            new LoginTestLogic(Driver, TestData.LoadData("TestData")).MakeLoginProcess();
+            var config = TestData.LoadData("TestData");
+            new LoginTestLogic(Driver, config).MakeLoginProcess();
         }
 
         [Fact]
-        public void MakeFollowProcessPass()
+        public void MakeFollowProcess_Follow()
         {
-            //bool result = new PostTestLogic(Driver, TestData.LoadData("TestData")).MakePostProcess();
-            //Assert.True(result, "Posting fail");
+            new SearchTestLogic(Driver, TestData.LoadData("TestData")).MakeSearchProcess();
+            bool result = new FollowTestLogic(Driver).MakeFollowProcess();
+            Assert.True(result);
             RecordTestResult(currentTestName, TestResult.Pass);
         }
 
         [Fact]
         public void MakeFollowProcessFail()
         {
-            
-            //bool result = new PostTestLogic(Driver, TestData.LoadData("WrongData")).MakePostProcess();
-            //Assert.False(result, "Posting successful");
+            new SearchTestLogic(Driver, TestData.LoadData("TestData")).MakeSearchProcess();
+            bool result = new FollowTestLogic(Driver).MakeFollowProcess();
+            Assert.False(result);
+            RecordTestResult(currentTestName, TestResult.Pass);
+        }
+
+        [Fact]
+        public void MakeFollowProcessFail_UnknownProfile()
+        {
+            new SearchTestLogic(Driver, TestData.LoadData("WrongData")).MakeSearchProcess();
+            bool result = new FollowTestLogic(Driver).MakeFollowProcess();
+            Assert.False(result);
             RecordTestResult(currentTestName, TestResult.Pass);
         }
     }

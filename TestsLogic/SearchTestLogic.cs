@@ -13,9 +13,9 @@ class SearchTestLogic
         if (driver.Url != _initialSite) driver.Navigate().GoToUrl(_initialSite);
     }
 
-    public string MakeSearchProcess()
+    public string? MakeSearchProcess()
     {
-        string result = null;
+        string? result = null;
         try
         {
             if (config == null) throw new Exception("No data found");
@@ -26,7 +26,7 @@ class SearchTestLogic
             searchInput.SendKeys(config.Search);
             
             Thread.Sleep(1000);
-            IWebElement searchOption = null;
+            IWebElement? searchOption = null;
             bool terminateSearch = false;
             for (int i = 1; i < 9; i++)
             {
@@ -53,15 +53,12 @@ class SearchTestLogic
             }
             if (searchOption == null) throw new Exception("SearchOption not found");
             searchOption.Click();
-            //if (postButton.GetAttribute("aria-disabled") == "true") throw new Exception("Cant click the element");
             Thread.Sleep(4000);
-            //((ITakesScreenshot)driver).GetScreenshot().SaveAsFile(@"..\..\..\Results\Logged.png");
         }
         catch (Exception ex)
         {
             Thread.Sleep(2000);
             Console.WriteLine($"Error - {ex}");
-            //((ITakesScreenshot)driver).GetScreenshot().SaveAsFile(@"..\..\..\Results\Failed To Log.png");
         }
         return result;
     }

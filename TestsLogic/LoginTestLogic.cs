@@ -57,13 +57,11 @@ class LoginTestLogic
             }
             result = true;
             Thread.Sleep(4000);
-            //((ITakesScreenshot)driver).GetScreenshot().SaveAsFile(@"..\..\..\Results\Logged.png");
         }
         catch (Exception ex)
         {
             Thread.Sleep(2000);
             Console.WriteLine($"Error - {ex}");
-            //((ITakesScreenshot)driver).GetScreenshot().SaveAsFile(@"..\..\..\Results\Failed To Log.png");
         }
         return result;
     }
