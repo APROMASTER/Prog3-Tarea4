@@ -7,34 +7,25 @@ namespace WebUnitTests
     public class PostTest : BaseTest
     {
         public PostTest(ITestOutputHelper outputHelper) : base(outputHelper)
-        {}
-
-        [Fact]
-        public void UnitTest()
         {
-            try
-            {
-                Assert.True(false);
-                //RecordTestResult(currentTestName, TestResult.Pass);
-            }
-            catch (Exception ex)
-            {
-                //RecordTestResult(currentTestName, TestResult.Fail);
-            }
+            new LoginTestLogic(Driver, TestData.LoadData("TestData")).MakeLoginProcess();
         }
 
         [Fact]
-        public void UnitTest2()
+        public void MakePostProcessPass()
         {
-            try
-            {
-                Assert.True(false);
-                RecordTestResult(currentTestName, TestResult.Pass);
-            }
-            catch (Exception ex)
-            {
-                RecordTestResult(currentTestName, TestResult.Fail);
-            }
+            bool result = new PostTestLogic(Driver, TestData.LoadData("TestData")).MakePostProcess();
+            Assert.True(result, "Posting fail");
+            RecordTestResult(currentTestName, TestResult.Pass);
+        }
+
+        [Fact]
+        public void MakePostProcessFail()
+        {
+            
+            bool result = new PostTestLogic(Driver, TestData.LoadData("WrongData")).MakePostProcess();
+            Assert.False(result, "Posting successful");
+            RecordTestResult(currentTestName, TestResult.Pass);
         }
     }
 }

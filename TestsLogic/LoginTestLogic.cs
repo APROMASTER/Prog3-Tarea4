@@ -3,10 +3,10 @@ using OpenQA.Selenium;
 class LoginTestLogic
 {
     private readonly IWebDriver driver;
-    public readonly string site;
-    private readonly TestData config;
+    private readonly TestData? config;
+     private readonly string _initialSite = "https://twitter.com/i/flow/login";
 
-    public LoginTestLogic(IWebDriver webDriver, TestData data)
+    public LoginTestLogic(IWebDriver webDriver, TestData? data)
     {
         config = data;
         driver = webDriver;
@@ -18,8 +18,7 @@ class LoginTestLogic
         try
         {
             if (config == null) throw new Exception("No data found");
-            driver.Url = "https://twitter.com/i/flow/login";
-            //driver.Navigate().GoToUrl(site);
+            if (driver.Url != _initialSite) driver.Url = _initialSite;
             Thread.Sleep(3000);
             var emailBox = driver.FindElement(By.XPath("//*[@id=\"layers\"]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div/div/div/div[5]/label/div/div[2]"));
             emailBox.Click();
@@ -28,7 +27,7 @@ class LoginTestLogic
             var emailInput = driver.FindElement(By.XPath("//*[@id=\"layers\"]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div/div/div/div[5]/label/div/div[2]/div/input"));
             emailInput.SendKeys(config.Email + Keys.Return);
 
-            IWebElement passwordInput = null;
+            IWebElement? passwordInput = null;
             string passwordInputXPath = "//*[@id=\"layers\"]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[1]/div/div/div[3]/div/label/div/div[2]/div[1]/input";
             bool passwordInputExists = false;
             try
