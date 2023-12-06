@@ -10,6 +10,7 @@ class PostTestLogic
     {
         config = data;
         driver = webDriver;
+        if (driver.Url != _initialSite) driver.Navigate().GoToUrl(_initialSite);
     }
 
     public bool MakePostProcess()
@@ -18,8 +19,6 @@ class PostTestLogic
         try
         {
             if (config == null) throw new Exception("No data found");
-            if (driver.Url != _initialSite) driver.Url = _initialSite;
-            //driver.Navigate().GoToUrl(site);
             Thread.Sleep(2000);
             var postBox = driver.FindElement(By.XPath("//*[@id=\"react-root\"]/div/div/div[2]/main/div/div/div/div[1]/div/div[3]/div/div[2]/div[1]/div/div/div/div[2]/div[1]/div/div/div/div/div/div/div/div/div/div/label/div[1]/div/div"));
             postBox.Click();

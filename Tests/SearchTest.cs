@@ -6,25 +6,27 @@ namespace WebUnitTests
     [Collection("Test collection")]
     public class SearchTest : BaseTest
     {
+        #pragma warning disable CS8602
         public SearchTest(ITestOutputHelper outputHelper) : base(outputHelper)
         {
             new LoginTestLogic(Driver, TestData.LoadData("TestData")).MakeLoginProcess();
         }
 
         [Fact]
-        public void MakeSearchProcessPass()
+        public void MakeSearchProcess_MatchSearch()
         {
-            //bool result = new PostTestLogic(Driver, TestData.LoadData("TestData")).MakePostProcess();
-            //Assert.True(result, "Posting fail");
+            var testData = TestData.LoadData("TestData");
+            string result = new SearchTestLogic(Driver, testData).MakeSearchProcess();
+            Assert.True(testData.Search == result);
             RecordTestResult(currentTestName, TestResult.Pass);
         }
 
         [Fact]
-        public void MakeSearchProcessFail()
+        public void MakeSearchProcess_EmptySearch()
         {
-            
-            //bool result = new PostTestLogic(Driver, TestData.LoadData("WrongData")).MakePostProcess();
-            //Assert.False(result, "Posting successful");
+            var testData = TestData.LoadData("WrongData");
+            string result = new SearchTestLogic(Driver, testData).MakeSearchProcess();
+            Assert.False(testData.Search == result);
             RecordTestResult(currentTestName, TestResult.Pass);
         }
     }

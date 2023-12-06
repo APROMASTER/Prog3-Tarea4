@@ -4,6 +4,7 @@ class TestData
     public string? Password { get; set; }
     public string? Username { get; set; }
     public string? Post { get; set; }
+    public string? Search { get; set; }
     public string? ProfileToSearch { get; set; }
     public string? ChatMessage { get; set; }
 
