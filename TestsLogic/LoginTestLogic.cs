@@ -10,6 +10,7 @@ class LoginTestLogic
     {
         config = data;
         driver = webDriver;
+        if (driver.Url != _initialSite) driver.Navigate().GoToUrl(_initialSite);
     }
 
     public bool MakeLoginProcess()
@@ -18,7 +19,6 @@ class LoginTestLogic
         try
         {
             if (config == null) throw new Exception("No data found");
-            if (driver.Url != _initialSite) driver.Url = _initialSite;
             Thread.Sleep(3000);
             var emailBox = driver.FindElement(By.XPath("//*[@id=\"layers\"]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div/div/div/div[5]/label/div/div[2]"));
             emailBox.Click();
