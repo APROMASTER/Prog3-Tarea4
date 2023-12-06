@@ -13,7 +13,7 @@ namespace WebUnitTests
         }
 
         [Fact]
-        public void MakeFollowProcess_Follow()
+        public void MakeFollowProcess()
         {
             new SearchTestLogic(Driver, TestData.LoadData("TestData")).MakeSearchProcess();
             bool result = new FollowTestLogic(Driver).MakeFollowProcess();
@@ -22,7 +22,7 @@ namespace WebUnitTests
         }
 
         [Fact]
-        public void MakeFollowProcessFail()
+        public void MakeFollowProcess_Fail()
         {
             new SearchTestLogic(Driver, TestData.LoadData("TestData")).MakeSearchProcess();
             bool result = new FollowTestLogic(Driver).MakeFollowProcess();

@@ -14,8 +14,8 @@ namespace WebUnitTests
         [Fact]
         public void MakeChatProcessPass()
         {
-            //bool result = new PostTestLogic(Driver, TestData.LoadData("TestData")).MakePostProcess();
-            //Assert.True(result, "Posting fail");
+            bool result = new ChatTestLogic(Driver, TestData.LoadData("TestData")).MakeChatProcess();
+            Assert.True(result, "Posting fail");
             RecordTestResult(currentTestName, TestResult.Pass);
         }
 
@@ -23,8 +23,8 @@ namespace WebUnitTests
         public void MakeChatProcessFail()
         {
             
-            //bool result = new PostTestLogic(Driver, TestData.LoadData("WrongData")).MakePostProcess();
-            //Assert.False(result, "Posting successful");
+            bool result = new ChatTestLogic(Driver, TestData.LoadData("WrongData")).MakeChatProcess();
+            Assert.False(result, "Posting successful");
             RecordTestResult(currentTestName, TestResult.Pass);
         }
     }
