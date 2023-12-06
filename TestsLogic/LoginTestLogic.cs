@@ -12,7 +12,7 @@ class LoginTestLogic
         driver = webDriver;
     }
 
-    public bool WriteLoginEmail()
+    public bool MakeLoginProcess()
     {
         bool result = false;
         try
@@ -28,11 +28,23 @@ class LoginTestLogic
             var emailInput = driver.FindElement(By.XPath("//*[@id=\"layers\"]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div/div/div/div[5]/label/div/div[2]/div/input"));
             emailInput.SendKeys(config.Email + Keys.Return);
 
-            //var passwordInput = driver.FindElement(By.XPath("//*[@id=\"layers\"]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[1]/div/div[2]/label/div/div[2]/div/input"));
             IWebElement passwordInput = null;
-            Thread.Sleep(800);
-            if (passwordInput != null)
+            string passwordInputXPath = "//*[@id=\"layers\"]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[1]/div/div/div[3]/div/label/div/div[2]/div[1]/input";
+            bool passwordInputExists = false;
+            try
             {
+                passwordInputExists = driver.FindElement(By.XPath(passwordInputXPath)).Displayed;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("passwordInputExists not found");
+            }
+
+
+            Thread.Sleep(800);
+            if (passwordInputExists)
+            {
+                passwordInput = driver.FindElement(By.XPath("//*[@id=\"layers\"]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[1]/div/div/div[3]/div/label/div/div[2]/div[1]/input"));
                 passwordInput.SendKeys(config.Password + Keys.Return);
             }
             else

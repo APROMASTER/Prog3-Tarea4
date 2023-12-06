@@ -36,14 +36,22 @@ public class BaseTest : IDisposable
         {
             case TestResult.Pass:
             {
+                //Console.ForegroundColor = ConsoleColor.Green;
+                //Console.WriteLine($"========= {currentTestName} PASSED ==========");
+                //Console.ResetColor();
+
                 CurrentTest.Log(Status.Pass, currentTestName + " run successfully");
                 SaveScreenshot(currentTestName + " Success Screenshot");
             }   break;
 
             case TestResult.Fail:
             case TestResult.Unknown:
+                //Console.ForegroundColor = ConsoleColor.Red;
+                //Console.WriteLine($"========= {currentTestName} FAILED ==========");
+                //Console.ResetColor();
+                
                 _output.WriteLine("Test Failed");
-                CurrentTest.Log(Status.Fail, currentTestName + "Failed");
+                CurrentTest.Log(Status.Fail, currentTestName + " failed");
                 SaveScreenshot(currentTestName + " Failure Screenshot");
                 break;
         }

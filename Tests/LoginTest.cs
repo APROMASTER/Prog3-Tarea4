@@ -12,29 +12,20 @@ namespace WebUnitTests
         [Fact]
         public void MakeALoginPassed()
         {
-            try
-            {
-                Assert.True(new LoginTestLogic(Driver, TestData.LoadData("TestData")).WriteLoginEmail());
-                RecordTestResult(currentTestName, TestResult.Pass);
-            }
-            catch (Exception ex)
-            {
-                RecordTestResult(currentTestName, TestResult.Fail);
-            }
+            //Assert.True(false, "Log in Failed");
+            bool result = new LoginTestLogic(Driver, TestData.LoadData("TestData")).MakeLoginProcess();
+            Assert.True(result, "Failed to Log in");
+            RecordTestResult(currentTestName, TestResult.Pass);
         }
 
         [Fact]
         public void MakeALoginFailed()
         {
-            try
-            {
-                Assert.False(new LoginTestLogic(Driver, TestData.LoadData("WrongData")).WriteLoginEmail());
-                RecordTestResult(currentTestName, TestResult.Pass);
-            }
-            catch (Exception ex)
-            {
-                RecordTestResult(currentTestName, TestResult.Fail);
-            }
+            //Assert.False(true, "Log in Passed");
+            bool result = new LoginTestLogic(Driver, TestData.LoadData("WrongData")).MakeLoginProcess();
+            Assert.False(result, "Log in passed");
+            RecordTestResult(currentTestName, TestResult.Pass);
+            
         }
     }
 }
