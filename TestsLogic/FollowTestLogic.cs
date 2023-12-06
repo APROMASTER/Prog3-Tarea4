@@ -15,7 +15,7 @@ class FollowTestLogic
         try
         {
             Thread.Sleep(2000);
-            string followXPath = "//*[@id=\"react-root\"]/div/div/div[2]/main/div/div/div/div[1]/div/div[3]/div/div/div/div[1]/div[1]/div[2]/div[4]/div[1]/div[2]";
+            string followXPath = "//*[@id=\"react-root\"]/div/div/div[2]/main/div/div/div/div[1]/div/div[3]/div/div/div/div/div[1]/div[2]/div[3]/div[1]/div";
             if (driver.FindElement(By.XPath(followXPath)).GetAttribute("data-testid").Contains("-unfollow")) return false;
 
             var followButton = driver.FindElement(By.XPath(followXPath));
@@ -38,7 +38,7 @@ class FollowTestLogic
         try
         {
             Thread.Sleep(2000);
-            string followXPath = "//*[@id=\"react-root\"]/div/div/div[2]/main/div/div/div/div[1]/div/div[3]/div/div/div/div[1]/div[1]/div[2]/div[4]/div[1]/div[2]";
+            string followXPath = "//*[@id=\"react-root\"]/div/div/div[2]/main/div/div/div/div[1]/div/div[3]/div/div/div/div/div[1]/div[2]/div[3]/div[1]/div";
             if (driver.FindElement(By.XPath(followXPath)).GetAttribute("data-testid").Contains("-follow")) return false;
 
             var unfollowButton = driver.FindElement(By.XPath(followXPath));
