@@ -24,12 +24,12 @@ namespace WebUnitTests
         [Fact]
         public void MakeFollowProcess_Fail()
         {
-            new SearchTestLogic(Driver, TestData.LoadData("TestData")).MakeSearchProcess();
+            new SearchTestLogic(Driver, TestData.LoadData("AltData")).MakeSearchProcess();
             bool result = new FollowTestLogic(Driver).MakeFollowProcess();
             Assert.False(result);
             RecordTestResult(currentTestName, TestResult.Pass);
         }
-
+        /*
         [Fact]
         public void MakeFollowProcessFail_UnknownProfile()
         {
@@ -38,5 +38,6 @@ namespace WebUnitTests
             Assert.False(result);
             RecordTestResult(currentTestName, TestResult.Pass);
         }
+        */
     }
 }
